@@ -13,7 +13,7 @@ const merriweather = Merriweather({ weight: '400', subsets: ['latin'], variable:
 const montserrat = Montserrat({ weight: '400', subsets: ['latin'], variable: '--font-montserrat' });
 
 export const viewport = {
-  themeColor: '#000000',
+  themeColor: '#ffffff',
 };
 
 export const metadata = {

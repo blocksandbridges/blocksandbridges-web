@@ -1,25 +1,25 @@
 {
-  "short_name": "Dragon's Purr Crafts and Sundry",
-  "name": "Dragon's Purr Crafts and Sundry",
+  "short_name": "Blocks and Bridges",
+  "name": "Blocks and Bridges",
   "icons": [
     {
-      "src": "https://dp-assets.tor1.digitaloceanspaces.com/brand/square-logo-no-text.png",
+      "src": "https://assets.blocksandbridges.ca/brand/color-symbol.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "https://dp-assets.tor1.digitaloceanspaces.com/brand/square-logo-no-text.png",
+      "src": "https://assets.blocksandbridges.ca/brand/color-symbol.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://dp-assets.tor1.digitaloceanspaces.com/brand/square-logo-no-text.png",
+      "src": "https://assets.blocksandbridges.ca/brand/color-symbol.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000"
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
 }

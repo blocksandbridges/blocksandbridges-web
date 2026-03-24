@@ -11,27 +11,25 @@ describe('Navigation', () => {
     render(<Navigation />);
     expect(screen.getByRole('link', { name: /home/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /brands/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /blog/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /portfolio/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /events/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /shop/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /donate/i })).toBeInTheDocument();
   });
 
   it('links to correct internal paths', () => {
     render(<Navigation />);
     expect(screen.getByRole('link', { name: /home/i })).toHaveAttribute('href', '/');
-    expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '/about');
-    expect(screen.getByRole('link', { name: /blog/i })).toHaveAttribute('href', '/blog');
+    expect(screen.getByRole('link', { name: /about us/i })).toHaveAttribute('href', '/mission-and-vision');
+    expect(screen.getByRole('link', { name: /events/i })).toHaveAttribute('href', '/contact');
     expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '/contact');
-    expect(screen.getByRole('link', { name: /shop/i })).toHaveAttribute('href', 'https://shop.dragonspurr.ca');
+    expect(screen.getByRole('link', { name: /donate/i })).toHaveAttribute('href', 'https://www.paypal.com/ncp/payment/8WF6GYS6HXU34');
   });
 
-  it('Shop link opens in new tab', () => {
+  it('Donate link opens in new tab', () => {
     render(<Navigation />);
-    const shopLink = screen.getByRole('link', { name: /shop/i });
-    expect(shopLink).toHaveAttribute('href', 'https://shop.dragonspurr.ca');
-    expect(shopLink).toHaveAttribute('target', '_blank');
-    expect(shopLink).toHaveAttribute('rel', 'noreferrer');
+    const donateLink = screen.getByRole('link', { name: /donate/i });
+    expect(donateLink).toHaveAttribute('href', 'https://www.paypal.com/ncp/payment/8WF6GYS6HXU34');
+    expect(donateLink).toHaveAttribute('target', '_blank');
+    expect(donateLink).toHaveAttribute('rel', 'noreferrer');
   });
 });

@@ -1,41 +1,101 @@
-import Image from "next/image";
-import { asset_base_url } from "@/app/lib/constants";
+import Image from 'next/image';
+import { PortableText, type PortableTextComponents } from '@portabletext/react';
+import type { PortableTextBlock } from '@portabletext/types';
+import { client } from '@/sanity/lib/client';
 
-export default function Team() {
+type TeamMember = {
+  _id: string;
+  name: string;
+  title: string;
+  bio: PortableTextBlock[];
+  imageUrl: string | null;
+  imageAlt: string | null;
+};
+
+const teamMembersQuery = `
+  *[_type == "teamMember"] | order(sortOrder asc, _createdAt asc) {
+    _id,
+    name,
+    title,
+    bio,
+    "imageUrl": image.asset->url,
+    "imageAlt": image.alt
+  }
+`;
+
+const portableTextComponents: PortableTextComponents = {
+  block: {
+    h1: ({ children }) => <h1 className="text-4xl md:text-5xl font-merriweather text-bnb-dark-blue mb-4">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-3xl md:text-4xl font-merriweather text-bnb-dark-blue mb-4">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-2xl md:text-3xl font-merriweather text-bnb-dark-blue mb-3">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-xl md:text-2xl font-merriweather text-bnb-dark-blue mb-3">{children}</h4>,
+    normal: ({ children }) => <p className="mb-4">{children}</p>,
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-4 border-bnb-light-blue pl-4 italic mb-4">{children}</blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => <ul className="list-disc pl-6 mb-4">{children}</ul>,
+    number: ({ children }) => <ol className="list-decimal pl-6 mb-4">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="mb-1">{children}</li>,
+    number: ({ children }) => <li className="mb-1">{children}</li>,
+  },
+};
+
+export default async function Team() {
+  const teamMembers = await client.fetch<TeamMember[]>(teamMembersQuery);
   return (
-    <div className="container mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div className="flex justify-start items-start">
-          <Image
-            src={`${asset_base_url}/kayt-and-ryan.png`}
-            alt="Kayt and Ryan"
-            className="bnb-circular-image"
-            width={500}
-            height={500}
-          />
+    <div className="bnb-content-page-root">
+      <section className="bnb-hero-banner">
+        <div className="container mx-auto relative z-10">
+          <h1 className="bnb-hero-banner-title">Team</h1>
         </div>
-        <div className="bnb-body-text">
-          <p>
-            <strong className="bnb-section-header">Who We Are</strong>
-            <br /><br />
-            Hi! We&apos;re Kayt and Ryan!<br />
-            Co-Founders of <strong className="text-red-600"><em>Dragon&apos;s Purr Crafts and Sundry!</em></strong> 
-            <br /><br />
-            We started Dragon&apos;s Purr for a bunch of different reasons, but chief among them was a desire to share our creativity with the world, and to make dorky little trinkets that folks like us would find funny, charming, and above all, inclusive; it&apos;s our hope that you&apos;ll find a bit of yourselves in our quirky designs.
-            <br /><br />
-            Beyond that, we believe in helping out where we can, and championing causes close to our hearts, both through the art we make, and through direct support in the form of charitable donations which come from the sale of that same art.
-            <br />
-          </p>
+      </section>
+
+      <section className="container mx-auto py-10 md:py-14">
+        <div className="space-y-12">
+          {teamMembers.map((member, index) => {
+            const isImageLeft = index % 2 === 0;
+            return (
+              <div key={member._id}>
+                <section
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${
+                    isImageLeft ? '' : 'md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1'
+                  }`}
+                >
+                  <div className="flex justify-center md:justify-start">
+                    {member.imageUrl != null && (
+                      <Image
+                        src={member.imageUrl}
+                        alt={member.imageAlt || member.name}
+                        className="bnb-team-image bnb-team-image-fade-all"
+                        width={800}
+                        height={800}
+                      />
+                    )}
+                  </div>
+                  <div className="bnb-body-text">
+                    <h2 className="bnb-section-header mb-2">{member.name}</h2>
+                    <h3 className="text-bnb-light-blue text-xl md:text-2xl mb-4">{member.title}</h3>
+                    <div className="[&_p]:mb-4 [&_p:last-child]:mb-0">
+                      <PortableText value={member.bio} components={portableTextComponents} />
+                    </div>
+                  </div>
+                </section>
+                <hr className="my-12 border-bnb-light-blue opacity-50" />
+              </div>
+            );
+          })}
+
+          {teamMembers.length === 0 && (
+            <div className="bnb-body-text">
+              <p>No team members found in Sanity yet.</p>
+            </div>
+          )}
         </div>
-        <div className="bnb-body-text">
-          <p>
-            <strong className="bnb-section-header">What We Make</strong>
-            <br /><br />
-            If you can slap vinyl on it, we can make it. From t-shirts to stickers, to mugs, keychains, and much more. Beyond the custom die-cut vinyl, we also offer small-scale custom engravings, and our own in-house designs on apparel courtesy of our sister brand, Hipster Donut Apparel. Check our portfolio page for some of our past work!
-            <br /><br />
-          </p>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

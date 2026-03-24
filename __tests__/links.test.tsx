@@ -1,28 +1,14 @@
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import Home from '@/app/page';
-import About from '@/app/team/page';
-import Brands from '@/app/brands/page';
-import Portfolio from '@/app/portfolio/page';
+import Team from '@/app/team/page';
 import Contact from '@/app/contact/page';
 import NotFound from '@/app/not-found';
 
 jest.mock('sweetalert2', () => ({ __esModule: true, default: { fire: jest.fn() } }));
 
-const mockFetch = (url: string) => {
-  if (url.startsWith('/api/portfolio'))
-    return Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve({ photos: [], page: 1, pages: 0, total: 0 }),
-    });
-  return Promise.reject(new Error('unexpected fetch'));
-};
-beforeAll(() => {
-  global.fetch = mockFetch as typeof fetch;
-});
-
-const VALID_INTERNAL_PATHS = ['/', '/about', '/brands', '/blog', '/portfolio', '/contact'];
+const VALID_INTERNAL_PATHS = ['/', '/mission-and-vision', '/what-is-fasd', '/contact', '/team'];
 
 function getAllLinks(container: HTMLElement): HTMLAnchorElement[] {
   return Array.from(container.querySelectorAll('a[href]'));
@@ -57,16 +43,6 @@ describe('All links have valid hrefs', () => {
     });
   });
 
-  it('Brands page brand links have valid hrefs', () => {
-    const { container } = render(<Brands />);
-    const hrefs = getLinkHrefs(container);
-    expect(hrefs.length).toBe(2);
-    hrefs.forEach((href) => {
-      expect(href).toBeTruthy();
-      expect(href).toMatch(/^https?:\/\//);
-    });
-  });
-
   it('Contact page social links have valid hrefs', () => {
     const { container } = render(<Contact />);
     const hrefs = getLinkHrefs(container);
@@ -83,17 +59,8 @@ describe('All links have valid hrefs', () => {
     expect(links.length).toBe(0);
   });
 
-  it('About page has no links in content', () => {
-    const { container } = render(<About />);
-    const links = getAllLinks(container);
-    expect(links.length).toBe(0);
-  });
-
-  it('Portfolio page has no links in content', async () => {
-    const { container } = render(<Portfolio />);
-    await waitFor(() => {
-      expect(container.querySelector('.animate-pulse')).toBeNull();
-    });
+  it('Team page has no links in content', () => {
+    const { container } = render(<Team />);
     const links = getAllLinks(container);
     expect(links.length).toBe(0);
   });
@@ -111,12 +78,10 @@ describe('All expected links are present and resolve to correct targets', () => 
     const { container } = render(<Navigation />);
     const hrefs = getLinkHrefs(container);
     expect(hrefs).toContain('/');
-    expect(hrefs).toContain('/about');
-    expect(hrefs).toContain('/brands');
-    expect(hrefs).toContain('/blog');
-    expect(hrefs).toContain('/portfolio');
+    expect(hrefs).toContain('/mission-and-vision');
+    expect(hrefs).toContain('/what-is-fasd');
     expect(hrefs).toContain('/contact');
-    expect(hrefs).toContain('https://shop.dragonspurr.ca');
+    expect(hrefs).toContain('https://www.paypal.com/ncp/payment/8WF6GYS6HXU34');
   });
 
   it('Footer contains expected external links', () => {
@@ -124,13 +89,6 @@ describe('All expected links are present and resolve to correct targets', () => 
     const hrefs = getLinkHrefs(container);
     expect(hrefs.filter((h) => h === 'https://dragonspurr.ca').length).toBe(1);
     expect(hrefs.filter((h) => h === 'https://boxingoctop.us').length).toBe(1);
-  });
-
-  it('Brands page links resolve to expected brand URLs', () => {
-    const { container } = render(<Brands />);
-    const hrefs = getLinkHrefs(container);
-    expect(hrefs).toContain('https://dragonspurr.ca');
-    expect(hrefs).toContain('https://hipsterdonut.myspreadshop.ca');
   });
 
   it('Contact page social links resolve to expected URLs', () => {

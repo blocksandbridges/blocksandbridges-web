@@ -44,44 +44,19 @@ export default function Contact() {
   };
 
   return (
-    <div className="container mx-auto">
-      <div className="bnb-page-header">
-        <strong>Contact</strong>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bnb-body-text">
+    <div className="bnb-content-page-root">
+      <section className="bnb-hero-banner">
+        <div className="container mx-auto relative z-10">
+          <h1 className="bnb-hero-banner-title">Contact</h1>
+        </div>
+      </section>
+
+      <section className="container mx-auto py-10 md:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bnb-body-text">
           <p>
-            If you have any questions, comments, or concerns, please feel free to reach out to us on social media.
-            <br /><br />
-            <a href={socialMedia.bluesky} {...externalLinkAttributes}>
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Bluesky_Logo.svg"
-                alt={`${siteInfo.name} on Bluesky`}
-                className="inline mr-5 grayscale contrast-200 brightness-200"
-                width={32}
-                height={32}
-              />
-            </a>
-            <a href={socialMedia.heycafe} {...externalLinkAttributes}>
-              <Image
-                src="https://assets.heycafecdn.com/logos/svg/logo_round_transparent_purple.svg?cache=wqn4mia5vlfugr4"
-                alt={`${siteInfo.name} on Hey.Café`}
-                className="inline mr-5 grayscale contrast-200 invert"
-                width={32}
-                height={32}
-              />
-            </a>
-            <a href={socialMedia.eh} {...externalLinkAttributes}>
-              <Image
-                src="https://dp-assets.tor1.digitaloceanspaces.com/socials/Eh-Logo.svg"
-                alt={`${siteInfo.name} on Eh!`}
-                className="inline mr-5 grayscale contrast-200 invert"
-                width={32}
-                height={32}
-              />
-            </a>
-            <br /><br />
-            Additionally, feel free to contact me via email through the form on this page.
+           <h3 className="text-3xl font-bold text-bnb-orange">Our team is here for you!</h3>
+            <p className="text-lg text-bnb-dark-blue">Email: <a href="mailto:info@blocksandbridges.ca" className="bnb-link">info@blocksandbridges.ca</a></p>
           </p>
         </div>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
@@ -133,8 +108,9 @@ export default function Contact() {
             />
           </div>
           <button type="submit" className="bnb-form-button">Submit</button>
-        </form>
-      </div>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }

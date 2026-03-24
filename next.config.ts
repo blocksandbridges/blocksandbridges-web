@@ -16,11 +16,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'dp-assets.tor1.digitaloceanspaces.com',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'upload.wikimedia.org',
         pathname: '/**',
       },

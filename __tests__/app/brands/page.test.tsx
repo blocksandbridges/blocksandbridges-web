@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Brands from '@/app/brands/page';
+import Brands from '@/app/why-we-started/page';
 
 describe('Brands page', () => {
   it('renders all two brand images with correct alt text', () => {

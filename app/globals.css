@@ -31,7 +31,7 @@
   }
 
   .bnb-body-text {
-    @apply font-merriweather text-2xl;
+    @apply font-merriweather text-lg;
   }
 
   .bnb-link {
@@ -40,7 +40,18 @@
   }
 
   .bnb-nav-item {
-    @apply flex gap-4 font-montserrat text-white text-2xl;
+    @apply flex gap-4 font-montserrat text-white text-xl;
+  }
+
+  /* Dropdown links: parent .bnb-nav-item forces text-white; override for white panels */
+  .bnb-submenu-link {
+    @apply block text-sm px-4 py-2 font-montserrat text-bnb-dark-blue no-underline
+      hover:text-bnb-light-blue focus-visible:text-bnb-light-blue focus-visible:outline-none;
+  }
+
+  .bnb-submenu-link:hover,
+  .bnb-submenu-link:focus-visible {
+    background-color: rgba(7, 152, 210, 0.1);
   }
 
   .bnb-form-label {
@@ -59,6 +70,36 @@
 
   .bnb-main-content {
     @apply flex-1 flex justify-center items-center mt-[100px] px-4 pb-24;
+  }
+
+  .bnb-content-page-root {
+    @apply w-full self-start -mt-[100px];
+  }
+
+  .bnb-hero-banner {
+    @apply relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] py-20 md:py-28 px-6 overflow-hidden bg-bnb-dark-blue;
+  }
+
+  .bnb-hero-banner-image {
+    @apply absolute inset-0 bg-cover bg-center;
+  }
+
+  .bnb-hero-banner-overlay {
+    @apply absolute inset-0;
+    background-color: rgba(51, 76, 111, 0.55);
+  }
+
+  .bnb-hero-banner-title {
+    @apply font-merriweather text-5xl md:text-7xl text-white leading-tight text-center drop-shadow-lg;
+  }
+
+  .bnb-team-image {
+    @apply w-full max-w-[480px] h-auto rounded-2xl object-cover shadow-2xl;
+  }
+
+  .bnb-team-image-fade-all {
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, #000 60%, transparent 100%);
   }
 }
 
