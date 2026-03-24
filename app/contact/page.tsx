@@ -4,8 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
-import { socialMedia,
-  siteInfo, envConfig, externalLinkAttributes } from "@/app/lib/constants";
+import { envConfig } from "@/app/lib/constants";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -54,11 +53,17 @@ export default function Contact() {
       <section className="container mx-auto py-10 md:py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bnb-body-text">
-          <p>
-           <h3 className="text-3xl font-bold text-bnb-orange">Our team is here for you!</h3>
-            <p className="text-lg text-bnb-dark-blue">Email: <a href="mailto:info@blocksandbridges.ca" className="bnb-link">info@blocksandbridges.ca</a></p>
-          </p>
-        </div>
+            <h3 className="text-3xl font-bold text-bnb-orange">Our team is here for you!</h3>
+            <p className="text-lg text-bnb-dark-blue mt-4">
+              Email:{' '}
+              <a
+                href="mailto:info@blocksandbridges.ca"
+                className="text-bnb-light-blue underline hover:text-bnb-dark-blue"
+              >
+                info@blocksandbridges.ca
+              </a>
+            </p>
+          </div>
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="from_name" className="bnb-form-label">

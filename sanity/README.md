@@ -19,7 +19,7 @@ Then set in this app’s `.env.local`:
 From the project root:
 
 ```bash
-npm create sanity@latest -- --project-plan free --create-project "Dragon's Purr" --dataset production
+npm create sanity@latest -- --project-plan free --create-project "Blocks and Bridges" --dataset production
 ```
 
 When prompted, choose “Embedded studio” and point it at this repo. Then copy the generated schema into `sanity/schemas/` (or merge with the existing `portfolioItem` schema) and run the studio with:

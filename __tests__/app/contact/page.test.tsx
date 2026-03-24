@@ -38,27 +38,17 @@ describe('Contact page', () => {
     mockSendForm.mockReset();
     mockSwalFire.mockReset();
   });
-  it('renders the Bluesky social image with correct alt and src', () => {
+
+  it('renders the page title and intro', () => {
     render(<Contact />);
-    const img = screen.getByRole('img', { name: /dragon's purr crafts and sundry on bluesky/i });
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('alt', 'Dragon\'s Purr Crafts and Sundry on Bluesky');
-    expect(img).toHaveAttribute('src', expect.stringContaining('Bluesky_Logo.svg'));
+    expect(screen.getByRole('heading', { level: 1, name: /contact/i })).toBeInTheDocument();
+    expect(screen.getByText(/our team is here for you/i)).toBeInTheDocument();
   });
 
-  it('renders the Hey.Café social image with correct alt and src', () => {
+  it('renders email link to Blocks and Bridges', () => {
     render(<Contact />);
-    const img = screen.getByRole('img', { name: /dragon's purr crafts and sundry on hey\.café/i });
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('alt', 'Dragon\'s Purr Crafts and Sundry on Hey.Café');
-    expect(img).toHaveAttribute('src', expect.stringContaining('heycafecdn'));
-  });
-
-  it('social images are wrapped in links that open in new tab', () => {
-    render(<Contact />);
-    const blueskyLink = screen.getByRole('link', { name: /dragon's purr crafts and sundry on bluesky/i });
-    expect(blueskyLink).toHaveAttribute('href', 'https://bsky.app/profile/dragonspurr.bsky.social');
-    expect(blueskyLink).toHaveAttribute('target', '_blank');
+    const emailLink = screen.getByRole('link', { name: /info@blocksandbridges\.ca/i });
+    expect(emailLink).toHaveAttribute('href', 'mailto:info@blocksandbridges.ca');
   });
 
   it('renders the contact form', () => {

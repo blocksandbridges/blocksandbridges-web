@@ -2,11 +2,10 @@ import { render, screen } from '@testing-library/react';
 import { Footer } from '@/components/Footer';
 
 describe('Footer', () => {
-  it('renders Dragon\'s Purr Crafts and Sundry link', () => {
+  it('renders Blocks and Bridges copyright link', () => {
     render(<Footer />);
-    const links = screen.getAllByRole('link', { name: /dragon's purr crafts and sundry/i });
-    expect(links.length).toBeGreaterThanOrEqual(1);
-    expect(links[0]).toHaveAttribute('href', 'https://dragonspurr.ca');
+    const bnbLink = screen.getByRole('link', { name: /blocks and bridges ltd/i });
+    expect(bnbLink).toHaveAttribute('href', 'https://blocksandbridges.ca');
   });
 
   it('renders current year in copyright', () => {

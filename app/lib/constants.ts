@@ -19,15 +19,7 @@ const siteInfo = {
   phone: "+1 (416) 555-1234",
   address: "608-26 Carluke Crescent, Toronto, ON M2L 2J2",
   hours: "Monday - Friday: 9:00 AM - 5:00 PM",
-  description: "Dragon's Purr Crafts and Sundry is a Toronto-Based Creative Duo that makes things",
-};
-
-const socialMedia = {
-  bluesky: "https://bsky.app/profile/dragonspurr.bsky.social",
-  heycafe: "https://hey.cafe/@dragonspurr",
-  eh: "https://ehnw.ca/u/dragonspurr",
-  instagram: "https://www.instagram.com/dragonspurr",
-  facebook: "https://www.facebook.com/dragonspurr",
+  description: "Blocks and Bridges is a Fetal Alcohol Spectrum Disorder (FASD) Support and Awareness Organization.",
 };
 
 const logoTypes = {
@@ -36,4 +28,4 @@ const logoTypes = {
   colorSymbol: `${asset_base_url}/brand/color-symbol.png`,
 };
 
-export { asset_base_url, externalLinkAttributes, logoTypes, siteInfo, socialMedia, envConfig };
+export { asset_base_url, externalLinkAttributes, logoTypes, siteInfo, envConfig };
