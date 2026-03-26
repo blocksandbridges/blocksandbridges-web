@@ -1,7 +1,7 @@
 import { act, render } from '@testing-library/react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import Home from '@/app/page';
+import { HomeView } from '@/components/HomeView';
 import Contact from '@/app/contact/page';
 import NotFound from '@/app/not-found';
 import Team from '@/app/team/page';
@@ -88,8 +88,8 @@ describe('All links have valid hrefs', () => {
     });
   });
 
-  it('Home page has no standalone links (only nav/footer when in layout)', () => {
-    const { container } = render(<Home />);
+  it('Home page has no standalone links when using fallback (no Sanity slides)', () => {
+    const { container } = render(<HomeView data={null} />);
     const links = getAllLinks(container);
     expect(links.length).toBe(0);
   });

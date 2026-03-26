@@ -7,7 +7,7 @@
   background-color: #fff;
   border: 1px solid #4b5563;
   border-radius: 0.375rem;
-  color: #000;
+  color: #ffffff;
 }
 
 .swal2-title,
@@ -18,22 +18,24 @@
 .swal2-icon {
   &.swal2-success {
     [class^='swal2-success-line'] {
-      background-color: #000;
+      background-color: #ffffff;
+      border-color: var(--bnb-dark-blue);
     }
 
     .swal2-success-ring {
-      border-color: rgba(185, 28, 28, 0.5);
+      border-color: var(--bnb-orange);
     }
   }
 
   &.swal2-error [class^='swal2-x-line'] {
-    background-color: #dc2626;
+    background-color: var(--bnb-orange);
+    border-color: var(--bnb-dark-blue);
   }
 }
 
 .swal2-styled {
   &.swal2-confirm {
-    background-color: #991b1b;
+    background-color: var(--bnb-orange);
     color: #fff;
     border: none;
     border-radius: 0.375rem;
@@ -42,7 +44,7 @@
     padding: 0.5rem 1rem;
 
     &:hover {
-      background-color: #dc2626;
+      background-color: var(--bnb-orange);
     }
   }
 
@@ -67,18 +69,5 @@
     flex: 1;
     min-height: 0;
     height: 100%;
-  }
-}
-
-/* Social icon tint: site red (#dc2626 / red-600) */
-.img-red-600 {
-  filter: brightness(0) saturate(100%) 
-    invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
-    brightness(104%) contrast(97%);
-
-  &:hover {
-    filter: brightness(0) saturate(100%) 
-      invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
-      brightness(114%) contrast(97%);
   }
 }

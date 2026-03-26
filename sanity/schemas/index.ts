@@ -1,5 +1,5 @@
 import { contentPage } from './contentPage';
-import { contributor } from './contributor';
+import { homeHeroSlide, homePage } from './homePage';
 import { teamMember } from './teamMember';
 
-export const schemaTypes = [contributor, teamMember, contentPage];
+export const schemaTypes = [teamMember, contentPage, homeHeroSlide, homePage];

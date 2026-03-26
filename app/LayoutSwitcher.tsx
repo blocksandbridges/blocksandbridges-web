@@ -21,7 +21,7 @@ export function LayoutSwitcher({ children }: { children: ReactNode }) {
     <>
       <Navigation />
       <main className="bnb-main-content">
-        <div className="w-full max-w-7xl mx-auto ">{children}</div>
+        <div className="w-full max-w-7xl mx-auto min-w-0">{children}</div>
       </main>
       <Footer />
     </>

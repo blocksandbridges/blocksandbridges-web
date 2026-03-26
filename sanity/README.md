@@ -1,31 +1,23 @@
-# Sanity schema for Portfolio
+# Sanity content
 
-The portfolio page reads content of type **`portfolioItem`** from your Sanity dataset.
-
-## Option A: Use Sanity Studio elsewhere
-
-If you already have a Sanity project (e.g. at [sanity.io/manage](https://sanity.io/manage)), add a document type that matches this schema:
-
-- **Type name:** `portfolioItem`
-- **Fields:** `title` (string), `image` (image), `url` (optional url)
-
-Then set in this app’s `.env.local`:
-
-- `NEXT_PUBLIC_SANITY_PROJECT_ID` – your project ID
-- `NEXT_PUBLIC_SANITY_DATASET` – e.g. `production`
-
-## Option B: Run Sanity Studio in this repo
-
-From the project root:
-
-```bash
-npm create sanity@latest -- --project-plan free --create-project "Blocks and Bridges" --dataset production
-```
-
-When prompted, choose “Embedded studio” and point it at this repo. Then copy the generated schema into `sanity/schemas/` (or merge with the existing `portfolioItem` schema) and run the studio with:
+Schemas live in `sanity/schemas/`. Run Studio from the project root:
 
 ```bash
 npx sanity dev
 ```
 
-Your content will be stored in the same project; ensure `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` match that project and dataset.
+Set `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` in `.env.local` (and deploy the schema when it changes).
+
+## Home page hero slideshow
+
+The **Home Page** singleton (`_id`: `homePage`) drives the autoscrolling hero on `/`:
+
+- **Slides** — ordered list of hero slides (image required; headline, subheadline, optional button link).
+- **Seconds per slide** — autoplay interval (3–120 seconds).
+
+Open **Home Page** in the Studio sidebar, add slides, and publish. If the document is missing or has no slides with images, the site falls back to the static logo + tagline block.
+
+## Other types
+
+- **`contentPage`** — dynamic routes under `/[slug]` with optional hero image and Portable Text body.
+- **`teamMember`** — team bios and photos for `/team`.

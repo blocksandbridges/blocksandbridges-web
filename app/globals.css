@@ -5,8 +5,8 @@
 @layer components {
   .bnb-nav-bar {
     @apply bg-bnb-orange w-full flex justify-center 
-    pt-2.5 pr-[100px] sticky top-0 z-50 border-b-4 
-    border-bnb-light-blue pb-2;
+    pt-2.5 pb-2 px-4 sm:px-6 lg:pr-[100px] sticky top-0 z-50 border-b-4 
+    border-bnb-light-blue;
   }
 
   .bnb-footer {
@@ -15,15 +15,15 @@
   }
 
   .bnb-footer-text {
-    @apply text-center font-merriweather text-sm text-white;
+    @apply text-center font-merriweather text-xs sm:text-sm text-white px-3 sm:px-4 max-w-full leading-snug;
   }
   
   .bnb-page-header {
-    @apply font-merriweather text-[60px] text-bnb-orange leading-none mb-12;
+    @apply font-merriweather text-4xl sm:text-5xl md:text-[60px] text-bnb-orange leading-none mb-8 sm:mb-12;
   }
 
   .bnb-section-header {
-    @apply font-merriweather text-4xl text-bnb-orange;
+    @apply font-merriweather text-3xl sm:text-4xl text-bnb-orange;
   }
 
   .bnb-circular-image {
@@ -40,7 +40,7 @@
   }
 
   .bnb-nav-item {
-    @apply flex gap-4 font-montserrat text-white text-xl;
+    @apply flex flex-wrap gap-x-3 gap-y-1 font-montserrat text-white text-base xl:text-lg 2xl:text-xl;
   }
 
   /* Dropdown links: parent .bnb-nav-item forces text-white; override for white panels */
@@ -68,16 +68,17 @@
     bg-bnb-cyan text-white hover:bg-bnb-light-blue;
   }
 
+  /* overflow-x only on main — never on html/body or sticky nav breaks */
   .bnb-main-content {
-    @apply flex-1 flex justify-center items-center mt-[100px] px-4 pb-24;
+    @apply flex flex-1 flex-col items-stretch justify-start px-4 sm:px-5 pb-28 sm:pb-24 min-w-0 overflow-x-hidden;
   }
 
   .bnb-content-page-root {
-    @apply w-full self-start -mt-[100px];
+    @apply w-full min-w-0;
   }
 
   .bnb-hero-banner {
-    @apply relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] py-20 md:py-28 px-6 overflow-hidden bg-bnb-dark-blue;
+    @apply relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw] py-14 sm:py-20 md:py-28 px-4 sm:px-6 overflow-hidden bg-bnb-dark-blue;
   }
 
   .bnb-hero-banner-image {
@@ -90,7 +91,7 @@
   }
 
   .bnb-hero-banner-title {
-    @apply font-merriweather text-5xl md:text-7xl text-white leading-tight text-center drop-shadow-lg;
+    @apply font-merriweather text-3xl sm:text-5xl md:text-7xl text-white leading-tight text-center drop-shadow-lg px-1;
   }
 
   .bnb-team-image {

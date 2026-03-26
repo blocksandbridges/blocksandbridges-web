@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
 import { envConfig } from "@/app/lib/constants";
