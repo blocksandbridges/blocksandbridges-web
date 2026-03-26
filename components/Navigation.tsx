@@ -197,7 +197,7 @@ export function Navigation() {
     <nav className="bnb-nav-bar shadow-lg" aria-label="Primary">
       <div className="w-full max-w-7xl mx-auto flex flex-col gap-0">
         <div className="flex items-center justify-between gap-3 w-full min-h-[3.25rem]">
-          <Link href="/" className="flex items-center shrink min-w-0" onClick={closeMobile}>
+          <Link href="/" className="relative z-20 flex items-center shrink min-w-0 overflow-visible" onClick={closeMobile}>
             <Image
               src={logoTypes.colorComboMarkWide}
               alt="Blocks and Bridges"

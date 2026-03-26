@@ -99,7 +99,7 @@ export function HomeHeroSlideshow({ slides, intervalMs }: HomeHeroSlideshowProps
               <h1 className="bnb-hero-banner-title">{title}</h1>
             )}
             {subtitle != null && subtitle.length > 0 && (
-              <p className="mt-0 font-merriweather text-lg sm:text-xl md:text-2xl text-white/95 drop-shadow-md max-w-3xl mx-auto">
+              <p className="mt-4 md:mt-5 font-merriweather text-lg sm:text-xl md:text-2xl text-white/95 drop-shadow-md max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
