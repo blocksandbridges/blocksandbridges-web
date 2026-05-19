@@ -14,7 +14,7 @@ export function Footer() {
         | All content and assets are Copyright © {year}{' '}
         <a href="https://blocksandbridges.ca" 
            className="bnb-link" {...externalLinkAttributes}>
-          Blocks and Bridges Ltd.
+          Blocks and Bridges.
         </a>
       </div>
     </footer>
